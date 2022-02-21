@@ -28,9 +28,8 @@ h2 {
 	margin: 2em 0 1em;
 }
 
-
 .card {
-	padding: 2.5em 4em 2.5em 3em;
+	padding: 3em 4em 3em 2.5em;
 }
 
 .card p {
@@ -40,28 +39,36 @@ h2 {
 
 .card:first-child {
 	border-radius: 5px 5px 0 0;
+	background-color: var(--bright-orange);
+}
+
+.card:first-child .card-button {
 	color: var(--bright-orange);
-	background-color: currentColor;
 }
 
 .card:nth-child(2) {
-	color: var(--dark-cyan);
-	background-color: currentColor;
+	background-color: var(--dark-cyan);
 } 
+
+.card:nth-child(2) .card-button {
+	color: var(--dark-cyan);
+}
 
 .card:last-child {
 	border-radius: 0 0 5px 5px;
+	background-color: var(--very-dark-cyan);
+}
+
+.card:last-child .card-button {
 	color: var(--very-dark-cyan);
-	background-color: currentColor;
 }
 
 .card-button {
-	color: currentColor;
 	margin-top: 1em;
 	padding: 1em;
 	border: none;
 	border-radius: 2em;
-	width: 60%;
+	width: 70%;
 	transition: 0.3s ease;
 	border: 2px solid var(--very-light-gray);
 }
@@ -73,8 +80,66 @@ h2 {
 
 /* hovers */
 @media (hover: hover) {
-	.card-button:hover {
+	.card:first-child .card-button:hover {
+		background-color: var(--bright-orange);
 		cursor: pointer;
-		background-color: currentColor;
+		color: var(--very-light-gray);
+	}
+
+	.card:nth-child(2) .card-button:hover {
+		background-color: var(--dark-cyan);
+		cursor: pointer;
+		color: var(--very-light-gray);
+	}
+
+	.card:last-child .card-button:hover {
+		cursor: pointer;
+		color: var(--very-light-gray);
+		background-color: var(--very-dark-cyan);
 	}
 }
+
+/* media queries */
+@media (min-width: 769px) {
+	body {
+		justify-content: center;
+		height: 100vh;
+	}
+
+	#component {
+		margin: 0;
+		flex-direction: row;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.card:first-child {
+		border-radius: 5px 0 0 5px;
+	}
+
+	.card:last-child {
+		border-radius: 0 5px 5px 0;
+	}
+
+	.card p {
+		flex-grow: 1;
+	}
+
+	#attribution {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+@media (min-width: 1281px) {
+	#component {
+		width: 65%;
+	}
+}
+
